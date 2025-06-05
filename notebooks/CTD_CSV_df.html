@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CTD_CSV_df.ipynb &#8212; Sittin&#39; on the Boat in the Bays</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/CTD_CSV_df';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KEY_HAR_DOC_profiles.ipynb" href="KEYHARDOC_profiles.html" />
+    <link rel="prev" title="Photo Gallery" href="../PhotoGallery.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="Sittin' on the Boat in the Bays - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="Sittin' on the Boat in the Bays - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Project Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../markdowns/Background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdowns/DataCollection.html">Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdowns/Results.html">Results and Discussion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdowns/References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdowns/Acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PhotoGallery.html">Photo Gallery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Code</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CTD_CSV_df.ipynb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KEYHARDOC_profiles.html">KEY_HAR_DOC_profiles.ipynb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAP.html">Map:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jlowe_notebook.html">Interactive Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Map_profiles.html">Map_profiles.ipynb</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aktgonza/BOAT/website" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aktgonza/BOAT/website/issues/new?title=Issue%20on%20page%20%2Fnotebooks/CTD_CSV_df.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/CTD_CSV_df.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CTD_CSV_df.ipynb</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-you-need-to-fill-in">1: Paths you need to fill in</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-this-cell">2: Run this cell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-dataframe">3: Preview DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataframe-as-csv-file">4: Save DataFrame as CSV file</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ctd-csv-df-ipynb">
+<h1>CTD_CSV_df.ipynb<a class="headerlink" href="#ctd-csv-df-ipynb" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="paths-you-need-to-fill-in">
+<h2>1: Paths you need to fill in<a class="headerlink" href="#paths-you-need-to-fill-in" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># folder where all csv files of CTD data is stored</span>
+<span class="n">folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\15093\work\classes\Summer 25\Sittin on the dock of the bay\Data\All Data&quot;</span>
+<span class="c1"># folder where all profiles of CTD data will be stored</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s2">&quot;profiles&quot;</span>
+<span class="c1"># folder where you want to save the total processed dataframe as a csv file</span>
+<span class="n">where_to_save</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\15093\work\classes\Summer 25\Sittin on the dock of the bay\total_df.csv&#39;</span>
+
+<span class="c1"># define areas: these were the areas we decided to use for our project</span>
+    <span class="c1">#DOC is the dock area</span>
+    <span class="c1"># HAR is harding cove</span>
+    <span class="c1"># MOR is morrison cove</span>
+    <span class="c1"># GLZ is glizzy cove or pike cove</span>
+    <span class="c1"># KEY is keystone cove</span>
+    <span class="c1"># LIL is a unnamed cove that is little</span>
+    <span class="c1"># ASP is aspen view (the parking lot near the yampa)</span>
+    <span class="c1"># MID is defined later in the code as anywhere that was not one of these locations (middle of stagecoach)</span>
+<span class="n">polygon_coords</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DOC&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.28429</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85365</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28360</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85341</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28240</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85488</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28356</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85524</span><span class="p">)],</span>
+    <span class="s1">&#39;HAR&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.28424</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85348</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28565</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85185</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28797</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85680</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28793</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85836</span><span class="p">)],</span>
+    <span class="s1">&#39;MOR&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.28003</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.84560</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28021</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.84274</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27252</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.83760</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27183</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.84056</span><span class="p">)],</span>
+    <span class="s1">&#39;GLZ&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.27291</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.84515</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27610</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85043</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27509</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85397</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27129</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.84970</span><span class="p">)],</span>
+    <span class="s1">&#39;KEY&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.27705</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.86361</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27700</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.86697</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28124</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.86839</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.28180</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.86597</span><span class="p">)],</span>
+    <span class="s1">&#39;LIL&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.27265</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.86163</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27315</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85961</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27114</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.85906</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.27115</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.86068</span><span class="p">)],</span>
+    <span class="s1">&#39;ASP&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mf">40.272286</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.876870</span><span class="p">),(</span><span class="mf">40.272286</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.876599</span><span class="p">),(</span><span class="mf">40.272016</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.876599</span><span class="p">),(</span><span class="mf">40.272016</span><span class="p">,</span> <span class="o">-</span><span class="mf">106.876870</span><span class="p">)]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-this-cell">
+<h2>2: Run this cell<a class="headerlink" href="#run-this-cell" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="s2">&quot;*.csv&quot;</span><span class="p">))</span>
+
+<span class="n">all_dfs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">file_paths</span><span class="p">:</span>
+    <span class="c1"># Step 1: Read header lines (first 29 lines)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">header_lines</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">29</span><span class="p">)]</span>
+
+<span class="c1">#collect the meta data</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">header_lines</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="s1">&#39;,&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">continue</span>  <span class="c1"># skip empty or malformed lines</span>
+    
+        <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">meta</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1">#skip invaliid measurement files</span>
+    <span class="k">if</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Sample type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;invalid&quot;</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="n">latitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Start latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;nan&quot;</span><span class="p">))</span>
+    <span class="n">longitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Start longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;nan&quot;</span><span class="p">))</span>
+    <span class="n">utc_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Cast time (UTC)&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">))</span>
+    <span class="n">device_id</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Device&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;File name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">cast_duration</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Cast duration (Seconds)&quot;</span><span class="p">,</span> <span class="s2">&quot;nan&quot;</span><span class="p">))</span>
+    <span class="n">samples_per_sec</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Samples per second&quot;</span><span class="p">,</span> <span class="s2">&quot;nan&quot;</span><span class="p">))</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="mi">29</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">continue</span>
+        
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Pressure (dbar)&quot;</span><span class="p">,</span> <span class="s2">&quot;Depth (m)&quot;</span><span class="p">,</span> <span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">,</span> <span class="s2">&quot;Conductivity (µS/cm)&quot;</span><span class="p">,</span> 
+                  <span class="s2">&quot;Specific Conductance (µS/cm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Salinity (PSS)&quot;</span><span class="p">,</span> 
+                  <span class="s2">&quot;Sound Velocity (m/s)&quot;</span><span class="p">,</span> <span class="s2">&quot;Density (kg/m³)&quot;</span><span class="p">]</span>
+    
+    <span class="c1"># Step 6: Add metadata columns</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latitude</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longitude</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;UTC Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utc_time</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;File Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_name</span>
+
+    <span class="c1"># Step 7: Append to list</span>
+    <span class="n">all_dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># concat all dataframes</span>
+<span class="n">total_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_dfs</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Extract the first row for each cast (based on File Name)</span>
+<span class="n">cast_locations</span> <span class="o">=</span> <span class="n">total_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;File Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">cast_locations</span> <span class="o">=</span> <span class="n">cast_locations</span><span class="p">[[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;File Name&quot;</span><span class="p">]]</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">grouped_meas</span> <span class="o">=</span> <span class="n">total_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;File Name&#39;</span><span class="p">)</span>
+
+<span class="c1"># We&#39;ll collect all data into a list of dicts</span>
+<span class="n">image_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">grouped_meas</span><span class="p">:</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">)</span> 
+
+    <span class="c1"># Determine test type based on number of depth values</span>
+    <span class="n">test_type</span> <span class="o">=</span> <span class="s2">&quot;point&quot;</span> <span class="k">if</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;cast&quot;</span>
+
+    <span class="k">if</span> <span class="n">test_type</span> <span class="o">==</span> <span class="s2">&quot;cast&quot;</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Profiles on </span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">],</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">])</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s1">&#39;Conductivity (µS/cm)&#39;</span><span class="p">],</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">])</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Conductivity (µS/cm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s1">&#39;Salinity (PSS)&#39;</span><span class="p">],</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">])</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Salinity (PSS)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s1">&#39;Density (kg/m³)&#39;</span><span class="p">],</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">])</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Density (kg/m³)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+        <span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;profile_</span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">img_path</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># No image for point measurement</span>
+
+    <span class="c1"># Store info</span>
+    <span class="n">image_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;File Name&#39;</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+        <span class="s1">&#39;Latitude&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Longitude&#39;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Longitude&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;ImagePath&#39;</span><span class="p">:</span> <span class="n">img_path</span><span class="p">,</span>
+        <span class="s1">&#39;TestType&#39;</span><span class="p">:</span> <span class="n">test_type</span><span class="p">,</span>
+        <span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s1">&#39;Conductivity (µS/cm)&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Conductivity (µS/cm)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s1">&#39;Salinity (PSS)&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Salinity (PSS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s1">&#39;Density (kg/m³)&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Density (kg/m³)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">})</span>
+
+<span class="c1"># Create DataFrame</span>
+<span class="n">image_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">image_data</span><span class="p">)</span>
+<span class="c1"># Merge &#39;TestType&#39; from cast_locations into total_df based on &#39;File Name&#39;</span>
+<span class="n">cast_locations</span><span class="p">[</span><span class="s1">&#39;TestType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_df</span><span class="p">[</span><span class="s1">&#39;TestType&#39;</span><span class="p">]</span>
+<span class="n">cast_locations</span><span class="p">[</span><span class="s1">&#39;ImagePath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_df</span><span class="p">[</span><span class="s1">&#39;ImagePath&#39;</span><span class="p">]</span>
+<span class="n">total_df</span> <span class="o">=</span> <span class="n">total_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cast_locations</span><span class="p">[[</span><span class="s1">&#39;File Name&#39;</span><span class="p">,</span> <span class="s1">&#39;TestType&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;File Name&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>    
+<span class="n">total_df</span> <span class="o">=</span> <span class="n">total_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cast_locations</span><span class="p">[[</span><span class="s1">&#39;File Name&#39;</span><span class="p">,</span> <span class="s1">&#39;ImagePath&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;File Name&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span> 
+
+<span class="n">polygons</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">polygon_coords</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="c1"># ---- Classify Points by Area ----</span>
+<span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">polygons</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">poly</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">point</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="s1">&#39;MID&#39;</span>
+
+<span class="n">cast_locations</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cast_locations</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">get_area</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">total_df</span><span class="p">[</span><span class="s1">&#39;Area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">get_area</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cast_locations</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">cast_locations</span><span class="p">[</span><span class="s1">&#39;File Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;_(\d</span><span class="si">{8}</span><span class="s1">)_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preview-dataframe">
+<h2>3: Preview DataFrame<a class="headerlink" href="#preview-dataframe" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Pressure (dbar)</th>
+      <th>Depth (m)</th>
+      <th>Temperature (°C)</th>
+      <th>Conductivity (µS/cm)</th>
+      <th>Specific Conductance (µS/cm)</th>
+      <th>Salinity (PSS)</th>
+      <th>Sound Velocity (m/s)</th>
+      <th>Density (kg/m³)</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>UTC Time</th>
+      <th>File Name</th>
+      <th>TestType</th>
+      <th>ImagePath</th>
+      <th>Area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.15</td>
+      <td>0.153151</td>
+      <td>9.153524</td>
+      <td>296.339874</td>
+      <td>433.834991</td>
+      <td>0.204679</td>
+      <td>1444.146359</td>
+      <td>999.934361</td>
+      <td>40.274148</td>
+      <td>-106.8399</td>
+      <td>2025-05-13 18:12:11</td>
+      <td>CC2435009_20250513_181211</td>
+      <td>cast</td>
+      <td>profiles\profile_CC2435009_20250513_181211.png</td>
+      <td>MOR</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.45</td>
+      <td>0.458792</td>
+      <td>9.255136</td>
+      <td>295.835466</td>
+      <td>431.811837</td>
+      <td>0.203774</td>
+      <td>1444.561198</td>
+      <td>999.927172</td>
+      <td>40.274148</td>
+      <td>-106.8399</td>
+      <td>2025-05-13 18:12:11</td>
+      <td>CC2435009_20250513_181211</td>
+      <td>cast</td>
+      <td>profiles\profile_CC2435009_20250513_181211.png</td>
+      <td>MOR</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.75</td>
+      <td>0.764653</td>
+      <td>9.132318</td>
+      <td>295.647002</td>
+      <td>433.089545</td>
+      <td>0.204300</td>
+      <td>1444.069489</td>
+      <td>999.938574</td>
+      <td>40.274148</td>
+      <td>-106.8399</td>
+      <td>2025-05-13 18:12:11</td>
+      <td>CC2435009_20250513_181211</td>
+      <td>cast</td>
+      <td>profiles\profile_CC2435009_20250513_181211.png</td>
+      <td>MOR</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.05</td>
+      <td>1.070511</td>
+      <td>9.033097</td>
+      <td>296.121842</td>
+      <td>435.049797</td>
+      <td>0.205173</td>
+      <td>1443.672646</td>
+      <td>999.948268</td>
+      <td>40.274148</td>
+      <td>-106.8399</td>
+      <td>2025-05-13 18:12:11</td>
+      <td>CC2435009_20250513_181211</td>
+      <td>cast</td>
+      <td>profiles\profile_CC2435009_20250513_181211.png</td>
+      <td>MOR</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.35</td>
+      <td>1.376366</td>
+      <td>8.925369</td>
+      <td>296.570547</td>
+      <td>437.092585</td>
+      <td>0.206079</td>
+      <td>1443.240202</td>
+      <td>999.958485</td>
+      <td>40.274148</td>
+      <td>-106.8399</td>
+      <td>2025-05-13 18:12:11</td>
+      <td>CC2435009_20250513_181211</td>
+      <td>cast</td>
+      <td>profiles\profile_CC2435009_20250513_181211.png</td>
+      <td>MOR</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="save-dataframe-as-csv-file">
+<h2>4: Save DataFrame as CSV file<a class="headerlink" href="#save-dataframe-as-csv-file" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">where_to_save</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../PhotoGallery.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Photo Gallery</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="KEYHARDOC_profiles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KEY_HAR_DOC_profiles.ipynb</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-you-need-to-fill-in">1: Paths you need to fill in</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-this-cell">2: Run this cell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-dataframe">3: Preview DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataframe-as-csv-file">4: Save DataFrame as CSV file</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+# Acknowledgements
+
+We would like to acknowledge the support of Colorado State Parks specifically at Stagecoach State Park who provided us access to Stagecoach Reservoir. , which provided the financial support for this study. Special thanks to Bia Villa Boas, Colin Beyers, and Jackson Krieger for their valuable assistance with data collection, analysis, and interpretation. We also appreciate the feedback from Matthew Siegfried, Bia Villa Boas, and Samara Omar for reviewing earlier drafts of our work.
